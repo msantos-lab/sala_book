@@ -22,3 +22,21 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
+
+# Ignorar a pasta "Documents" e seus subdiretórios
+Documents/
+
+# Pasta "server" 
+server/.mvn
+server/.vscode
+server/HELP.md
+server/mvnw.cmd
+server/mvnw
+server/src/test
+
+# Pasta "client/"
+client/node_modules
+client/.gitignore
+client/package.json
+client/package-lock.json
+client/README.md
