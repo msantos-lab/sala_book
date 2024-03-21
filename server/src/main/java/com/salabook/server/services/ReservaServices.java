@@ -8,27 +8,27 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
-import com.salabook.server.entities.User;
-import com.salabook.server.repositories.UserRepository;
+import com.salabook.server.entities.Reserva;
+import com.salabook.server.repositories.ReservaRepository;
 import com.salabook.server.services.exceptions.DatabaseException;
 import com.salabook.server.services.exceptions.ResourceNotFoundException;
 
 @Service
-public class UserServices {
+public class ReservaServices {
 
     @Autowired
-    private UserRepository repository;
+    private ReservaRepository repository;
 
-    public List<User> findAll(){
+    public List<Reserva> findAll(){
         return repository.findAll();
     }
 
-    public User findById(Long id){
-        Optional<User> obj = repository.findById(id);
+    public Reserva findById(Long id){
+        Optional<Reserva> obj = repository.findById(id);
 		return obj.orElseThrow(() -> new ResourceNotFoundException(id));
     }
 
-    public User insert(User obj){
+    public Reserva insert(Reserva obj){
         return repository.save(obj);
     }
 
@@ -44,9 +44,9 @@ public class UserServices {
         }
     }
 
-    public User update(Long id, User obj){
+    public Reserva update(Long id, Reserva obj){
         try {
-            User entity =  repository.getReferenceById(id);
+            Reserva entity =  repository.getReferenceById(id);
             updateData(entity, obj);
             return repository.save(entity);
         } catch (Exception e) {
@@ -54,10 +54,9 @@ public class UserServices {
         }
     }
 
-    private void updateData(User entity, User obj){
-        entity.setNome(obj.getNome());
-        entity.setEmail(obj.getEmail());
-        entity.setNivelUser(obj.getNivelUser());
-        entity.setSenha(obj.getSenha());
+    private void updateData(Reserva entity, Reserva obj){
+        entity.setMomento(obj.getMomento());
     }
+
+
 }

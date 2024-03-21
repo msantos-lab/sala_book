@@ -21,7 +21,7 @@ public enum NivelUser {
                 return nivel;
             }
         }
-        throw new IllegalArgumentException("Código Nível User errado");
+        throw new IllegalArgumentException("Código Nível User errado.");
     }
 
 }

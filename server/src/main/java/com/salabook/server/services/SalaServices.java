@@ -8,27 +8,27 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
-import com.salabook.server.entities.User;
-import com.salabook.server.repositories.UserRepository;
+import com.salabook.server.entities.Sala;
+import com.salabook.server.repositories.SalaRepository;
 import com.salabook.server.services.exceptions.DatabaseException;
 import com.salabook.server.services.exceptions.ResourceNotFoundException;
 
 @Service
-public class UserServices {
+public class SalaServices {
 
     @Autowired
-    private UserRepository repository;
+    private SalaRepository repository;
 
-    public List<User> findAll(){
+    public List<Sala> findAll(){
         return repository.findAll();
     }
 
-    public User findById(Long id){
-        Optional<User> obj = repository.findById(id);
+    public Sala findById(Long id){
+        Optional<Sala> obj = repository.findById(id);
 		return obj.orElseThrow(() -> new ResourceNotFoundException(id));
     }
 
-    public User insert(User obj){
+    public Sala insert(Sala obj){
         return repository.save(obj);
     }
 
@@ -44,9 +44,9 @@ public class UserServices {
         }
     }
 
-    public User update(Long id, User obj){
+    public Sala update(Long id, Sala obj){
         try {
-            User entity =  repository.getReferenceById(id);
+            Sala entity =  repository.getReferenceById(id);
             updateData(entity, obj);
             return repository.save(entity);
         } catch (Exception e) {
@@ -54,10 +54,11 @@ public class UserServices {
         }
     }
 
-    private void updateData(User entity, User obj){
+    private void updateData(Sala entity, Sala obj){
         entity.setNome(obj.getNome());
-        entity.setEmail(obj.getEmail());
-        entity.setNivelUser(obj.getNivelUser());
-        entity.setSenha(obj.getSenha());
+        entity.setCapacidade(obj.getCapacidade());
+        entity.setStatus(obj.getStatus());
     }
+
+
 }
