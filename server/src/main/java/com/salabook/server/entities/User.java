@@ -1,13 +1,18 @@
 package com.salabook.server.entities;
 
 import java.io.Serializable;
+import java.util.List;
+import java.util.ArrayList;
 
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.salabook.server.entities.enums.NivelUser;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -33,6 +38,10 @@ public class User implements Serializable {
         this.senha = senha;
         setNivelUser(nivelUser);
     }
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "user")
+    private List<Reserva> reserva = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -75,6 +84,16 @@ public class User implements Serializable {
             this.nivelUser = nivelUser.getCode();
         }
     }
+
+
+    public List<Reserva> getReservas() {
+		return reserva;
+	}
+
+	public void setReservas(List<Reserva> reservas) {
+		this.reserva = reservas;
+	}
+
 
     @Override
     public int hashCode() {

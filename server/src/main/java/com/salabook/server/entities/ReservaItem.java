@@ -2,6 +2,7 @@ package com.salabook.server.entities;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.salabook.server.entities.pk.ReservaItemPK;
@@ -18,15 +19,15 @@ public class ReservaItem implements Serializable {
     @EmbeddedId
     private ReservaItemPK id = new ReservaItemPK();
 
-    private LocalDate comeco;
-    private LocalDate fim;
+    private Date comeco;
+    private Date fim;
 
     
     public ReservaItem() {
     }
 
 
-    public ReservaItem(Reserva reserva, Sala sala, LocalDate comeco, LocalDate fim) {
+    public ReservaItem(Reserva reserva, Sala sala, Date comeco, Date fim) {
         super();
         id.setReserva(reserva);
         id.setSala(sala);
@@ -53,19 +54,19 @@ public class ReservaItem implements Serializable {
     }
 
 
-    public LocalDate getComeco() {
+    public Date getComeco() {
         return comeco;
     }
 
-    public void setComeco(LocalDate comeco) {
+    public void setComeco(Date comeco) {
         this.comeco = comeco;
     }
 
-    public LocalDate getFim() {
+    public Date getFim() {
         return fim;
     }
 
-    public void setFim(LocalDate fim) {
+    public void setFim(Date fim) {
         this.fim = fim;
     }
 
