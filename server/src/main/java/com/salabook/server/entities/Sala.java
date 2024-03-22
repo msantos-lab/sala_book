@@ -6,7 +6,7 @@ import java.util.Set;
 import java.util.List;
 import java.util.ArrayList;
 
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.salabook.server.entities.enums.StatusSala;
 
 import jakarta.persistence.Entity;
@@ -29,6 +29,7 @@ public class Sala implements Serializable {
     public Integer status;
 
      @OneToMany(mappedBy = "id.sala")
+     @JsonIgnore
     private Set<ReservaItem> itens = new HashSet<>();
 
      public Sala() {
@@ -41,6 +42,7 @@ public class Sala implements Serializable {
         setStatus(status);
     }
 
+    @JsonIgnore
     public List<Reserva> getReservas(){
         List<Reserva> lista = new ArrayList<>();
         for(ReservaItem x : itens){
@@ -83,6 +85,7 @@ public class Sala implements Serializable {
         }
     }
 
+    @JsonIgnore
     public Set<ReservaItem> getItens() {
         return itens;
     }

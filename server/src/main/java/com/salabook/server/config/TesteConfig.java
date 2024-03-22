@@ -3,7 +3,6 @@ package com.salabook.server.config;
 import java.util.Arrays;
 import java.text.SimpleDateFormat;
 
-import org.hibernate.mapping.Array;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
@@ -50,8 +49,8 @@ public class TesteConfig implements CommandLineRunner{
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 
-        Reserva r1 = new Reserva(null, sdf.parse("1/02/2024 17:30"), u1);
-        Reserva r2 = new Reserva(null, sdf.parse("10/02/2024 9:00"), u1);
+        Reserva r1 = new Reserva(null, sdf.parse("1/02/2024 17:30"), u1, s1);
+        Reserva r2 = new Reserva(null, sdf.parse("10/02/2024 9:00"), u1, s1);
         reservaRepository.saveAll(Arrays.asList(r1, r2));
         		
 		ReservaItem ri1 = new ReservaItem(r1, s1, sdf.parse("10/02/2024 10:30"), sdf.parse("10/02/2024 13:30"));
@@ -61,8 +60,7 @@ public class TesteConfig implements CommandLineRunner{
         r2.getItens().addAll(Arrays.asList(ri2));
 
         s1.getItens().addAll(Arrays.asList(ri1, ri2));
-
-        
+       
         reservaItemRepository.saveAll(Arrays.asList(ri1, ri2));
     }
 

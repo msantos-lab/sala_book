@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
-@RequestMapping(value = "/sala")
+@RequestMapping(value = "/salas")
 public class SalaResources {
 
     @Autowired

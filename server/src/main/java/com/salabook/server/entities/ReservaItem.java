@@ -1,7 +1,6 @@
 package com.salabook.server.entities;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -16,6 +15,7 @@ import jakarta.persistence.Table;
 public class ReservaItem implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    @JsonIgnore
     @EmbeddedId
     private ReservaItemPK id = new ReservaItemPK();
 
@@ -35,7 +35,7 @@ public class ReservaItem implements Serializable {
         this.fim = fim;
     }
 
-     @JsonIgnore //evitar o loop na requisicao
+    @JsonIgnore  //evitar o loop na requisicao
     public Reserva getReserva() {
         return id.getReserva();
     }
@@ -43,7 +43,6 @@ public class ReservaItem implements Serializable {
     public void setReserva(Reserva reserva) {
         id.setReserva(reserva);
     }
-
 
     public Sala getSala() {
         return id.getSala();

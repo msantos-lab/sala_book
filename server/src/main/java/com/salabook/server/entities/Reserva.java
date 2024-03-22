@@ -1,12 +1,12 @@
 package com.salabook.server.entities;
 
 import java.io.Serializable;
-import java.time.Instant;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -33,7 +33,12 @@ public class Reserva implements Serializable {
 	@JoinColumn(name="user_id")
 	private User user;
 
+    @ManyToOne
+	@JoinColumn(name="sala_id")
+	private Sala sala;
+
     @OneToMany(mappedBy = "id.reserva")
+    @JsonIgnore
     private Set<ReservaItem> itens = new HashSet<>();
 
 
@@ -41,10 +46,11 @@ public class Reserva implements Serializable {
     public Reserva() {
     }
 
-    public Reserva(Long id, Date momento, User user) {
+    public Reserva(Long id, Date momento, User user, Sala sala) {
         this.id = id;
         this.momento = momento;
         this.user = user;
+        this.sala = sala;
     }
 
     public Long getId() {
@@ -78,6 +84,14 @@ public class Reserva implements Serializable {
     public void setUser(User user) {
         this.user = user;
     }
+      
+    public Sala getSala() {
+        return sala;
+    }
+
+    public void setSala(Sala sala) {
+        this.sala = sala;
+    }
 
     @Override
     public int hashCode() {
@@ -109,5 +123,5 @@ public class Reserva implements Serializable {
         return "Reserva [id=" + id + ", momento=" + momento + ", itens=" + itens + "]";
     }
 
-    
+
 }

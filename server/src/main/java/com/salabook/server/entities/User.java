@@ -39,8 +39,9 @@ public class User implements Serializable {
         setNivelUser(nivelUser);
     }
 
-    @JsonIgnore
+
     @OneToMany(mappedBy = "user")
+    @JsonIgnore
     private List<Reserva> reserva = new ArrayList<>();
 
     public Long getId() {
@@ -85,7 +86,7 @@ public class User implements Serializable {
         }
     }
 
-
+    @JsonIgnore
     public List<Reserva> getReservas() {
 		return reserva;
 	}
