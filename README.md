@@ -1,7 +1,7 @@
 # Sistema de Gestão de Reservas de Salas - Sala Book
 Este projeto é um sistema de gestão de reservas de salas, desenvolvido em Java com Spring Boot. O sistema permite que utilizadores façam reservas de salas para reuniões ou outras atividades.
 
-![Diagrama de classe UML - Sala Book](https://irp.cdn-website.com/71e3a291/dms3rep/multi/uml_sb.png)
+<img src="https://irp.cdn-website.com/71e3a291/dms3rep/multi/uml_sb.png" alt="Diagrama de classe UML - Sala Book" width="600" />
 
 ## Funcionalidades Principais:
 - Os utilizadores podem registar-se, fazer login e gerir as suas próprias reservas.
